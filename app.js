@@ -2,15 +2,11 @@ var async = require("async");
 var jsdom = require("jsdom");
 var request = require("request");
 var cheerio = require('cheerio');
-
 var fs = require("fs");
 var url = require("url");
-
 var webshot = require('webshot');
 
 //base domain
-//var domain = "http://visualjournali.st";
-//var domain = "http://184.73.203.85:8080"
 var domain = "http://localhost:3000"
 var books = [];
 
@@ -36,13 +32,12 @@ request(domain, function (error, response, html) {
 			//Add bookfolder to an array so that you can add files to it.
 			books.push(bookFolder);
 		});
-		console.log("books");
+		console.log("Creating these books:");
 		console.log(books);
 
 
 
 		//Download epub files================================================================================
-		console.log(' ')
 
 		var download = function(uri, filename, callback){
 			request.head(uri, function(err, res, body){
@@ -69,7 +64,6 @@ request(domain, function (error, response, html) {
 				if (prefixFolder){
 						folder = '';
 						inputFolder = books[book] + '/';
-						console.log('-----------FOLDER: '+folder);
 				}
 				if (book<books.length&&fileNumber<loop_array.length){
 					var source=domain + '/' + inputFolder + folder + loop_array[fileNumber] + "?mode=export";
@@ -87,7 +81,7 @@ request(domain, function (error, response, html) {
 					fileNumber++;
 					looper();
 				} else{
-					console.log('Done.')
+					console.log('Finished loop.')
 				}
 			}
 			looper();
@@ -181,7 +175,7 @@ request(domain, function (error, response, html) {
 						loopComics();
 					});
 				}else{
-					console.log('done with current language.')
+					console.log('Done downloading ' + language + ' comics.')
 					currentLanguage++;
 					counterComics = 0;
 					loopComics();
