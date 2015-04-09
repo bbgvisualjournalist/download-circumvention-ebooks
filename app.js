@@ -159,7 +159,7 @@ request(domain, function (error, response, html) {
 		  }
 		}
 
-		var comics_array = ['dns', 'freegate', 'pgp', 'psiphon', 'tor', 'ultrasurf', 'vpn'];
+		var comics_array = toolFiles_array;
 		var counterComics = 0;
 		var currentLanguage = 0;
 		var language = 'english';
