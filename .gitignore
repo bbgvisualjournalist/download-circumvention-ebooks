@@ -34,3 +34,6 @@ persian
 # exclude tools for validating and compressing final epubs
 ePub Zip*
 epubcheck-3.0.1
+
+#exclude rendered ebooks
+*.epub
