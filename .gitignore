@@ -30,3 +30,7 @@ node_modules
 english
 russian
 persian
+
+# exclude tools for validating and compressing final epubs
+ePub Zip*
+epubcheck-3.0.1
